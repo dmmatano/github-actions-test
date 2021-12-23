@@ -17,6 +17,9 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
           
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+        
       - name: Build with Gradle
         run: ./gradlew build
         
