@@ -18,7 +18,7 @@ jobs:
           distribution: 'microsoft'
           
       - name: Change wrapper permissions
-        uses: gradle/wrapper-validation-action@v1
+        run: chmod +x ./gradlew
       
       - name: Build with Gradle
         run: ./gradlew build
