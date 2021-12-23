@@ -1,0 +1,448 @@
+*********************************************************************
+                PDVS Android - Histórico de versões
+*********************************************************************
+ v4.1.11.0 -  16/04/2021
+----------------------------------------------------------------------
+- Primeira versão.
+    - Esta versão contempla apenas a versão do N910.
+- Esta versão não contempla integração com automação comercial.
+
+v4.1.12.0 -  17/05/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial.
+
+*** APLICAÇÃO ***
+
+- ID18060: Nova funcionalidade: App é executado como launcher nos POS Android.
+- ID18214: Nova funcionalidade: Passa a permitir venda digitada, basta clicar na tela de inserção do
+           cartão.
+- ID18058: Correção: Não permite imprimir repetidas vezes o comprovante do cliente.
+- ID18093: Correção: Passa a exibir adequadamente a última linha do comprovante da operação
+           "Configuração".
+- ID18324: Correção: Os dados técnicos "Empresa de Automação" e "Nome de Automação" estavam sendo
+           enviados com valores trocados.
+- ID18932: Passa a exibir na tela do dispositivo Android o mesmo comprovante que é impresso.
+-          Nova funcionalidade: Adicionado endereço padrão de produção.
+- ID18936: Correção: Informa que o terminal está sem bobina para imprimir os comprovantes.
+- ID18153: Correção: Estava ocorrendo crash ao final do processo de venda com Getnet.
+- ID18159: Correção: Foi realizada a troca para exibir o comprovante gráfico ou de texto.
+- ID18161: Correção: Passa a bloquear a abertura do menu lateral durante as vendas.
+- ID19476: Correção: Ao executar uma função administrativa "Reimpressão", fornece a opção de
+           imprimir a via do cliente.
+- ID19716: Correção: Passa a exibir o valor correto ao iniciar a venda pela inserção do cartão.
+- ID19713: Correção: Passa a solicitar a remoção do cartão ao final da venda.
+-          Correção: Removido o botão de cancelar da tela de remover o cartão.
+- ID19852: Correção: Em caso de falha na venda, após bloqueio e desbloqueio da tela, volta para a
+           tela principal.
+- ID16951: Correção: Criado timeout de 30s para verificar inatividade e cancelar operações.
+- ID20295 : Passa a enviar os erros para o Sentry.
+- ID19749: Nova Funcionalidade: Passa a enviar o tempo de percepção do usuário (T5).
+-          Correção: Não permite clicar em vender após inserir o cartão.
+- ID19736: Correção: Ajuste para evitar travamento ocasional na tela "ERRO PINPAD [-2142] RETIRE
+           O CARTÃO".
+- ID19972: Nova Funcionalidade: Passa a solicitar a senha técnica para entrar nas configurações
+           do Android.
+- ID16120: Nova Funcionalidade: Tela de ajuda.
+-          Nova funcionalidade: Nova senha técnica gerada através do gerador de senhas, caso o PDC esteja
+           instalado.
+
+*** PGWebLib (v4.1.12.0) ***
+>>> Módulo PGWebLib <<<
+- ID19301: Correção (interna): Passa a reiniciar os valores timeout para interação com usuário após
+           a manutenção. Isso foi feito para que o teste de chaves funcione adequadamente após uma
+           manutenção.
+- ID19066: Correção (interna): Corrige o pós processamento dos dados adicionais da rede adquirente
+           durante a captura do cartão. Anteriormente, o terminal poderia reiniciar caso processasse
+           um cartão para rede adquirente de índice 01.
+
+>>> Módulo Android <<<
+- ID18107: Melhoria: Adição do texto 'Android' na versão do Android exibida no comprovante dados
+           terminal.
+- ID19713: Correção: Passa a pedir a remoção do cartão no POS Android quando a transação é cancelada
+           no fluxo transacional e o cartão está inserido.
+- ID19749: Nova Funcionalidade: Passa a enviar o T5 da transação
+-          Melhoria: Passa a remover as informações do pdc após manutenção.
+- ID19739: Correção: Ajuste para evitar crash na confirmação de transações com VISA crédito.
+
+    > Newland (N910)
+    * bcnewland-release:    v1.90
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.31
+
+v4.1.12.1 -  27/05/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+
+*** APLICAÇÃO ***
+- ID20691: Correção: Estava exibindo subtotal 0 no teste de chaves.
+- ID20829: Correção: Passa a não permitir que seja digitado zero como primeiro digito.
+- ID20827: Correção: Passa a formatar o valor em pt-BR.
+- ID20831: Correção: Durante algumas transações, travava em "Processando".
+-          Melhoria: Modificado o applicationId, mantendo o mesmo do C6Pay.
+- ID20835: Correção: ajustado problema de deslocamento de comprovante.
+- ID20960: Correção: criada funções para acessar o remove card da pgweblib após impressão do
+           comprovante.
+- ID21137: Correção: A barra lateral do aplicativo não estava sendo fechada após inserir o cartão e
+           iniciar a venda.
+
+*** PGWebLib (v4.1.12.1) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- ID21142: Correção: Ao executar diversas transações seguidas pela inserção do cartão, ocorriam
+           travamentos.
+- ID20837: Correção: Função criada para chamar o remove card após a impressão do comprovante.
+-          Correção: Mesmo em caso de falha na instalação, passava a pedir a senha técnica do
+           gerador de senha. Agora essa senha só é pedida após uma instalação bem sucedida.
+
+    > Newland (N910)
+    * bcnewland-release:    v1.90
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.31
+
+v4.1.12.2 -  28/05/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+*** APLICAÇÃO ***
+- ID21781: Correção: Erro na leitura do cartão na 1ª venda.
+- ID21794: Correção: Após realizar várias vendas seguidas, terminal ficou travado no processando.
+-          Melhoria: Uso do teclado definido por UX.
+*** PGWebLib (v4.1.12.1) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+>>> Módulo Android <<<
+- Não houve alterações neste módulo.
+    > Newland (N910)
+    * bcnewland-release:    v1.90
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.31
+
+v4.1.12.3 -  09/06/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+
+*** APLICAÇÃO ***
+- ID23241: Nova funcionalidade: Definir launcher C6Pay Integrado como prioritário no dispositivo.
+- ID22017: Correção: Metodo de timeout das telas ajustado.
+- ID22159: Correção: Mensagens de erro de impressão ajustado.
+- ID22340: Correção: A aplicação estava travando em "PROCESSANDO" após acessar o "Menu Administrativo" e cancelar a operação.
+- ID22347: Correção: Trocada a senha do lojista de "000000" para "999999"
+- ID22306: Correção: Ao emitir uma mensagem de modo inválido na leitura de NFC, estava ficando preso nessa tela. Agora ele volta para a tela de inserção do cartão.
+- ID21959: Correção: Após imprimir a via do cliente, e desligar e ligar a tela do terminal o app travava.
+- ID20737: Correção: Timeout na tela de inserir o cartão ou digitar.
+-          Correção: não permitir duplo clique em botões que chamam o HomeFragment.
+		   Correção: Valor da transação é exibido em uma única linha.
+-          Alteração: removido o idSuffix dos flavors.
+-          Alteração: retirado o suspend da função callPrinter.
+- 		   Atualização: PGWeblib_Android.
+-          Atualização: PPCompNewland.
+-          Atualização: Printer.
+-          Atualização: Printer_N910.
+
+*** PGWebLib (v4.1.12.3) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- ID22040: Correção: A numeração da versão do C6Pay Integrado estava incorreta,
+estava exibindo a versão da PGWebLib (Menu administrativo -> Versão).
+- ID22978: Correção: Não chama mais o removeCard em operações ADM.
+- ID22334: Correção: Não exibe a mensagem para inserir um cartão quando tiver um cartão inserido.
+
+
+    > Newland (N910)
+    * bcnewland-release:    v2.01
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.32
+
+v4.1.12.4 -  15/06/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+
+*** APLICAÇÃO ***
+- ID23337: Correção: Falha após ter clicado rapidamente nos botões de "imprimir via do cliente"
+e "Finalizar".
+- ID23349: Correção: Ao acessar os itens de menu que não são transacionais (vender e adm)
+e clicar no botão "voltar" do terminal estava indo para a tela home, posteriormente ao tentar
+acessar o mesmo menu não deixava acessar.
+- ID23351: Correção: Telefone e e-mail do menu "Ajuda" estavam incorretos.
+- ID23408: Correção: Ajuste para reduzir o tempo de exibição da tela “Processando”.
+- ID23340: Correção: Ajuste no fluxo do RemoveCard ao finalizar ou cancelar transações.
+- ID23338: Correção: Telas com animação (processando, erro, sucesso) agora tem timeout de 30s.
+- ID23476: Correção: Após a atualização, o launcher novo não está sendo priorizado.
+- ID23339: Correção: O timeout estava sendo enviado para o fluxo de PIN-Pad, nisso a aplicação
+ficava travada em processando sempre ao iniciar uma nova venda.
+- ID23656: Correção: Sempre que dava timeout no remover o cartão a próxima venda era cancelada
+no meio do fluxo.
+- ID23434: Correção: Ao remover a bateria na tela de transação autorizada a venda ficava pendente.
+- ID23655: Correção: Remover o cartão depois de alguns minutos da transação ser finalizadadeixava
+a aplicação travada.
+- 		   Atualização: PGWeblib_Android.
+-          Atualização: PPCompNewland.
+
+*** PGWebLib (v4.1.12.4) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- ID23434: Correção: validação para verificar transações pendentes ao inicializar a lib.
+- ID23655: Correção: remover o cartão depois de alguns minutos da transação ser
+finalizadadeixava a aplicação travada.
+- ID23340: Correção: alterado o método removeCard para chamar o RMC ao invés de um CKE.
+
+
+    > Newland (N910)
+    * bcnewland-release:    v2.01
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.33
+
+
+v4.1.15.0 -  13/07/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+
+*** APLICAÇÃO ***
+
+- ID23838: Estava exibindo a mensagem de operação cancelada antes de imprimir o teste de chaves.
+- ID23865: Correção: Sobreposição de telas quando navega de "Ajuda" para "Sobre" e posteriormente clica em voltar.
+- ID23871: Correção: Informações do menu Ajuda.
+- ID23968: Correção: Inserido timeout na tela removeCard apenas para quando o cartão for retirado efetivamente, para casos de travamento nessa tela.
+- ID23345: Correção: Tela de Configurações
+- ID24314: Correção: Menu Lateral
+- ID24120: Correção: Ao clicar 2x botão cancelar da data de vencimento do cartão, ele cancelava a venda atual e a seguinte. Clicando múltiplas vezes, travava o terminal.
+- ID23895: Correção: Ao remover a bateria durante a impressão do comprovante, a transação estava ficando pendente, o que deixava o pdc bloqueado. Agora, essa transação é confirmada após religar o terminal.
+- ID23902: Melhoria: Diminuição do tempo de exibição da mensagem “PROCESSANDO” ao iniciar uma venda/cancelamento.
+- ID24357: Correção: Alteração de titulo na tela principal.
+- ID24074: Correção: Priorizar C6Pay Integrado como launcher padrão.
+- ID24386: Melhoria: Criada mensagem personalizada para tela de timeout
+- ID24386: Correção: Alteracao do valor de boolean de controle do timeout
+- ID24668: Melhoria: Alterar botões de ação na tela de comprovante
+- ID24668: Melhoria: Alterar botões de ação na tela de comprovante
+- ID24736: Correção: Definir priorização do launcher apenas para flavors POS
+- ID24646: Melhoria: Alteração LABELS no menu ADM
+- ID22210: Correção: O terminal estava reimprimindo os dois comprovantes juntos, caso o botão "Imprimir via do cliente" fosse clicado durante a reimpressão da via do estabelecimento.
+- ID18326: Correção: Adicionado título "Selecione:" aos menus que não tinham título.
+- ID21305: Melhoria: Passa a exibir o teclado numérico para captura de pdc e cpf/cnpj.
+- ID21505: Correção: Ao realizar o cancelamento, na tela de inserção do cartão, o subtotal está com o valor zerado.
+- ID18383: Correção: Alteração tamanho da fonte
+- ID25126: Melhoria: Alteração botões
+- ID25338: Melhoria: Migrado Kotlin 1.5 e Atualizado Hilt.
+- Correção: Ajuste para evitar duas mensagens de erro de timeout na tela de inserção do cartão.
+- Correção: Após clicar no botão cancelar na tela de insira o cartão, era possível clicar no restante da tela e fazer a venda digitada.
+- Melhoria: Adição de mais logs e ajuste loop flow para tentar obter mais info sobre travamentos processando
+- Atualização: meSDK.
+- Atualização: BCNewland.
+- Atualização: PPCompNewland.
+- Atualização: PGWebLib.
+
+
+*** PGWebLib (v4.1.15.0) ***
+>>> Módulo PGWebLib <<<
+- ID19412: Nova funcionalidade: Passa a detalhar o erro de formato inválido para certificação L07.
+- ID16724: Nova funcionalidade: Passa a enviar o tipo da transação para o PIN-pad em PIN-pads ABECS.
+- ID19832: Nova funcionalidade: Passa a detalhar processo de remapeamento de tabelas nos logs para ser possível depurar eventuais problemas.
+- ID20626: Nova funcionalidade: Adicionada nova função PW_iPPCommTest. Esta função é utilizada para realizar teste de comunicação com o PINpad.
+           Caso não encontre o PINpad com a porta já configurada, procura de forma automática.
+- ID15798: Correção (interna): Passa a considerar o PIN-pad como fechado caso ocorra erro na transmissão do comando para fechar o PIN-pad.
+
+>>> Módulo Android <<<
+- ID23895: Correção: Ajuste para armazenar os dados da transação em cache ao remover a bateria.
+- ID21164: Correção: Ao manter o cartão inserido até o final da transação não irá começar outra automaticamente.
+- ID21164: Correção: Apenas reiniciar a checagem de insertCard ao realizar o removeCard.
+Correção: Estava sendo solicitada a captura do cartão mais de uma vez durante o fluxo transacional.
+
+
+    > Newland (N910)
+    * bcnewland-release:    v2.04
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.34
+
+
+v4.1.15.1 -  12/08/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+
+*** APLICAÇÃO ***
+
+- ID26630: Correção: Travamento por instabilidade da conexão dos dados móveis.
+
+*** PGWebLib (v4.1.15.0) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- Não houve alterações neste módulo.
+
+
+    > Newland (N910)
+    * bcnewland-release:    v2.04
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.34
+
+v4.1.15.2 -  03/09/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial e não suporta iniciar a venda por
+inserção de cartão.
+
+*** APLICAÇÃO ***
+- Primeira versão.
+    - Esta versão contempla apenas a versão do GPOS700 Mini.
+
+
+*** PGWebLib (v4.1.15.0) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- Não houve alterações neste módulo.
+
+
+    > Newland (N910)
+    * bcnewland-release:    v2.04
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.34
+
+    > GPOS700
+    * gedi: 1.14.15.200208
+    * ppcomp: 1.29.210113
+    * kernel: 3.10.49 / build: WPOS-3_V1.01_20021722
+    * PPCompGERTEC v1.34
+
+
+v4.1.15.3 -  20/09/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial.
+
+*** APLICAÇÃO ***
+-          Correção: Para de enviar confirmação em operações que não precisam de confirmação.
+- ID28435: Correção: Os asteriscos já vem preenchidos na tela de pin algumas vezes.
+- ID28672: Correção: Display duplicado de Operação Cancelada no menu de pinpad.
+- ID28599: Correção: Crash durante o timeout no menu de PIN-Pad.
+- ID26390: Correção: Máximo de caracteres atingido.
+- SPM-86 : Nova Funcionalidade: Tageamento do aplicativo.
+- SPM-79 : Nova Funcionalidade: Refatoração da navegação do Front.
+- SPM-171: Nova Funcionalidade: Criada função para saber as modalidades de pagamento suportadas.
+- SPM-146: Nova Funcionalidade: Criada tela para selecionar o tipo de pagamento.
+- SPM-148: Nova Funcionalidade: Implementado notas da versão.
+- ID27901: Nova Funcionalidade: Criado tela Conheça o Portal C6 Pay.
+-          Nova Funcionalidade: Venda por inserção de cartão.
+- ID27410: Nova Funcionalidade: Aba relatórios no menu lateral.
+- ID26442: Nova Funcionalidade: Exibir dados do estabelecimento comercial
+           (CNPJ/CPF e razão social) na Home.
+
+*** PGWebLib (v4.1.15.1) ***
+>>> Módulo PGWebLib <<<
+- ID25521: Correção (interna) : Passa a permitir até 99 AID's no remapeamento de AID's da camada de
+           tratamento PIN-pad. Esta correção corrige o problema de modo inválido para alguns AID's
+           em uma inicialização com roteamento de bandeiras.
+- PGWEB-44: Nova funcionalidade: Passa a retornar a modalidade de pagamento em PW_iGetOperationEx.
+- PGWEB-36: Correção (interna): Deixa de sobrescrever a mensagem de EQUIPAMENTO INCOMPATÍVEL COM
+            REDE ADQUIRENTE por ERRO PINPAD [-2140].
+
+>>> Módulo Android <<<
+- Não houve alterações neste módulo.
+
+
+    > Newland (N910)
+    * bcnewland-release:    v2.04
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.34
+
+    > GPOS700
+    * gedi: 1.14.15.200208
+    * ppcomp: 1.29.210113
+    * kernel: 3.10.49 / build: WPOS-3_V1.01_20021722
+    * PPCompGERTEC v1.34
+
+v4.1.15.4 - Versão Interna (testes)
+v4.1.15.5 - Idêntica a versão 4.1.15.1
+
+v4.1.15.6 -  08/11/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial.
+
+*** APLICAÇÃO ***
+- SPM-189: Correção: A mensagem "Cartão com erro ou mal inserido" é exibida cortado no display e
+ com palavras juntas.
+- SPM-186: Correção: Com o roteamento de bandeiras configurado, ao iniciar uma venda e cancelar a
+ operação, a aplicação trava.
+- SPM-201: Correção: O botão "voltar" do terminal, retorna para as telas anteriores até cancelar a
+ operação.
+- SPM-178: Correção: Após aprovar transações de módulo CTLS, tarja e digitado, terminal exibe
+ "Imprimindo...".
+- SPM-59: Nova Funcionalidade: Cancelamento de venda - Atualização de fluxo.
+- SPM-232: Correção: Falha ao solicitar "Aproxime, Insira ou passe o cartão".
+- SPM-175: Correção: "Retire o Cartão" é exibido 2x e na primeira vez exibe "Retireo Cartão".
+- SPM-218: Correção: Estava pedindo para remover o cartão em caso de tarja. Agora só pede a remoção
+ em caso de chip.
+- SPM-225: Correção: Alteração do comportamento do timeout: agora são contabilizados 30 segundos de
+ inatividade e não 30 segundos na mesma tela.
+- SPM-179: Correção: A aplicação do C6Pay Integrado travava após entrar e sair das configurações do
+ Android.
+- SPM-255: Correção: Ajuste para atualização de versão: após a atualização da versão o usuário é
+ direcionado para a tela inicial do C6Pay Integrado.
+- SPM-269: Correção: Total estava sendo exibido rapidamente na tela de remoção do cartão.
+- SPM-211: Correção: Ao iniciar uma venda por cartão, durante o processo a aplicação solicitava o
+ cartão novamente.
+- SPM-221: Nova Funcionalidade: Criado Webview para carregar o portal da PayGo.
+- SPM-264: Correção: Ao tentar imprimir relatório no N910 aplicação estava travando.
+
+*** PGWebLib (v4.1.15.2) ***
+>>> Módulo PGWebLib <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- SPM-128: Correção: Estava sendo exibida uma mensagem reduntante sobre a inserção do cartão após
+  erro na primeira leitura.
+- Correção: Ao iniciar uma venda pela inserção do cartão não deve pedir para inserir um cartão.
+- Correção: Para alguns dispositivos GPOS700 estava pegando o clitype errado, impossibilitando a
+  realização de transações.
+
+    > Newland (N910)
+    * bcnewland-release:    v2.04
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.35
+
+    > GPOS700
+    * gedi: 1.14.15.200208
+    * ppcomp: 1.30.3
+    * kernel: 3.10.49 / build: WPOS-3_V1.01_20021722
+    * PPCompGERTEC v1.36
+
+v4.1.15.7 -  22/11/2021
+----------------------------------------------------------------------
+- Esta versão não contempla integração com automação comercial.
+
+*** APLICAÇÃO ***
+- SPM-284: Melhoria: Ajuste na formatação da frase "Cartão com erro ou mal inserido".
+- SPM-275: Correção: No N910 durante o processo de venda por inserção de cartão, a aplicação estava travando.
+- SPM-282: Correção: Aplicação estava travando na tela de imprimir ao pressionar voltar na tela de recibo.
+- SPM-277: Correção: Erro ao informar valor de uma venda iniciada por inserção.
+
+*** PGWebLib (v4.1.15.3) ***
+>>> Módulo PGWebLib (v4.1.15) <<<
+- Não houve alterações neste módulo.
+
+>>> Módulo Android <<<
+- Correção: Ao iniciar uma venda por inserção de cartão e retirar o cartão, travava em processando.
+- Correção: Após a instalação do pdc, era necessário reiniciar o terminal para conseguir vender por
+  inserção de cartão.
+- SPM-289: Correção: Aleatoriamente o terminal travava na tela de "Retire o cartão".
+
+    > Newland (N910)
+    * bcnewland-release:    v2.11
+    * kernel: 3.10.49 / build: V2.3.04
+    * PPComp Newland: v1.36
+
+    > GPOS700
+    * gedi: 1.14.15.200208
+    * ppcomp: 1.30.3
+    * kernel: 3.10.49 / build: WPOS-3_V1.01_20021722
+    * PPCompGERTEC v1.37
