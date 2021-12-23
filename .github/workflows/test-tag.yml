@@ -1,0 +1,38 @@
+name: test-tag
+
+on:
+  push:
+    tags:
+      - "v[0-9].[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Java JDK
+        uses: actions/setup-java@v2.4.0
+        with:
+          java-version: 1.8
+          
+      - name: Build with Gradle
+        run: ./gradlew build
+        
+      - name: Get tag
+        run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
+        
+      - name: Creating dir 
+        run: mkdir PDVS_android_${TAG}
+        
+      - name: Copy "historico de versoes" to dir 
+        run: cp "PDVS Android - Historico de versoes.txt" "PDVS_android_${TAG}/PDVS Android - Historico de versoes.txt"
+        
+      - name: Copy apk to dir
+        run: cp "app/build/outputs/apk/debug/app-debug.apk" "PDVS_android_${TAG}/PDVS_Android_${TAG}.apk"
+        
+      - name: Upload a Zip file
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: PDVS_android_${TAG}
+          path: PDVS_android_${TAG}.zip
