@@ -27,7 +27,7 @@ jobs:
         run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
         
       - name: Creating dir 
-        run: mkdir app/PDVS_androidx
+        run: mkdir -p app/PDVS_androidx
         
       - name: Copy historico de versoes to dir 
         run: cp "PDVS Android - Historico de versoes.txt" app/PDVS_androidx/PDVS.txt
