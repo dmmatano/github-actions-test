@@ -26,28 +26,16 @@ jobs:
       - name: Get tag
         run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV      
         
-      - name: Creating dir 
-        run: |
-          mkdir -p app/PDVS_androidx
-        
-      - name: Copy historico de versoes to dir 
-        run: |
-          cp 'PDVS Android - Historico de versoes.txt' 'app/PDVS_androidx/PDVS Android - Historico de versoes.txt'
-        
       - name: Copy apk to dir
         run: | 
-          cp 'app/build/outputs/apk/debug/app-debug.apk' app/PDVS_androidx/PDVS_Androidx.apk
-          
-      - name: Changing dir
-        run: | 
-          cd app/PDVS_androidx
+          cp 'app/build/outputs/apk/debug/app-debug.apk' PDVS_Androidx.apk
           
       - name: Zip step
         run: | 
-          zip  PDVS_Android.zip PDVS_Androidx.apk 'PDVS Android - Historico de versoes.txt'
+          zip  PDVS_ndroid.zip PDVS_Androidx.apk 'PDVS Android - Historico de versoes.txt'
         
       - name: Upload a Zip file
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: PDVS_androidx
-          path: PDVS_Android.zip
+          name: PDVS
+          path: PDVS_ndroid.zip
