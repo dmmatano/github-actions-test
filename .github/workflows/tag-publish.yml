@@ -28,14 +28,14 @@ jobs:
         
       - name: Copy apk to dir
         run: | 
-          cp 'app/build/outputs/apk/debug/app-debug.apk' PDVS_Android_${TAG}.apk
+          cp 'app/build/outputs/apk/debug/app-debug.apk' 'PDVS_Android_${TAG}.apk'
           
       - name: Zip step
         run: | 
-          zip  PDVS_android_${TAG}.zip PDVS_Android_${TAG}.apk 'PDVS Android - Historico de versoes.txt'
+          zip  'PDVS_android_${TAG}.zip' 'PDVS_Android_${TAG}.apk' 'PDVS Android - Historico de versoes.txt'
         
       - name: Upload a Zip file
         uses: actions/upload-artifact@v2.2.4
         with:
           name: PDVS
-          path: PDVS_android_${TAG}.zip
+          path: 'PDVS_android_${TAG}.zip'
